@@ -4,7 +4,7 @@ const sha256 = require('sha256');
 	this.chain = [];
 	this.pendingTransactions = [];
 
-	//Genesis block : the first block of blockchain
+	//	Genesis block : the first block of blockchain
 	this.createNewBlock(100, '0', '0');
 };
 
