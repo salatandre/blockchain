@@ -86,7 +86,14 @@ app.post('/register-and-broadcast-node', function(req, res){
 
 //	Register a node with the network
 app.post('/register-node', function(req, res){
-	
+	const newNodeUrl = rec.body.newNodeUrl;
+	const nodeNotAlreadyPresent = coin.networkNodes.indexOf(newNodeUrl) == -1 ;
+	const notCurrentNode = coin.currentNodeUrl !== newNodeUrl;
+	if (nodeNotAlreadyPresent && notCurrentNode) 
+		coin.networkNodes.push(newNodeUrl);
+			res.json({
+				note : 'New Node register successfully.'
+			});
 });
 
 //	Register multiple nodes at once
